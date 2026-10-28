@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#163b32">
+	<title>FestPass 2026 | Registration</title>
+	<style>
+		:root {
+			color-scheme: light;
+			--ink: #17231f;
+			--muted: #65716b;
+			--green: #163b32;
+			--green-soft: #dce9df;
+			--lime: #d7ed75;
+			--coral: #c65a42;
+			--paper: #f5f6ef;
+			--white: #fffefa;
+			--line: #dce1d8;
+			--danger: #a53d2c;
+			--success: #246548;
+			font-family: "Aptos", "Segoe UI Variable", "Segoe UI", sans-serif;
+			font-synthesis: none;
+			text-rendering: optimizeLegibility;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+			min-width: 320px;
+		}
+
+		.masthead {
+			color: var(--white);
+			background-color: var(--green);
+			background-image: repeating-linear-gradient(135deg, transparent 0 42px, rgb(255 255 255 / 4%) 42px 44px);
+			border-bottom: 5px solid var(--lime);
+		}
+
+		.masthead-inner,
+		main {
+			width: min(1120px, calc(100% - 48px));
+			margin-inline: auto;
+		}
+
+		.masthead-inner {
+			min-height: 88px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.brand-mark {
+			display: grid;
+			place-items: center;
+			width: 42px;
+			aspect-ratio: 1;
+			color: var(--green);
+			background: var(--lime);
+			font-family: Georgia, serif;
+			font-size: 24px;
+			font-weight: 700;
+			border-radius: 50%;
+		}
+
+		.brand-name {
+			display: block;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: 22px;
+			line-height: 1.1;
+		}
+
+		.brand-caption {
+			display: block;
+			margin-top: 4px;
+			color: #c8d6cb;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 1.4px;
+			text-transform: uppercase;
+		}
+
+		.edition {
+			color: var(--lime);
+			font-size: 13px;
+			font-weight: 700;
+			letter-spacing: 1.2px;
+			text-transform: uppercase;
+		}
+
+		main { padding-block: 48px 64px; }
+
+		.intro {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 28px;
+			padding-bottom: 32px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.kicker {
+			margin: 0 0 10px;
+			color: var(--coral);
+			font-size: 12px;
+			font-weight: 800;
+			letter-spacing: 1.6px;
+			text-transform: uppercase;
+		}
+
+		h1, h2, p { margin-top: 0; }
+
+		h1 {
+			margin-bottom: 10px;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: 42px;
+			font-weight: 500;
+			line-height: 1.08;
+		}
+
+		.intro-copy {
+			max-width: 560px;
+			margin-bottom: 0;
+			color: var(--muted);
+			font-size: 16px;
+			line-height: 1.6;
+		}
+
+		.health {
+			flex: 0 0 auto;
+			display: flex;
+			align-items: center;
+			gap: 9px;
+			padding: 10px 13px;
+			border: 1px solid var(--line);
+			border-radius: 4px;
+			background: var(--white);
+			color: var(--muted);
+			font-size: 13px;
+		}
+
+		.health-dot {
+			width: 9px;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background: #b7c0b9;
+			box-shadow: 0 0 0 3px #edf0e9;
+		}
+
+		.health[data-state="online"] .health-dot { background: #319263; }
+		.health[data-state="offline"] .health-dot { background: var(--danger); }
+
+		.workspace {
+			display: grid;
+			grid-template-columns: minmax(280px, 0.82fr) minmax(380px, 1.18fr);
+			gap: 64px;
+			padding-top: 34px;
+		}
+
+		.section-heading {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 16px;
+			margin-bottom: 22px;
+			padding-bottom: 14px;
+			border-bottom: 2px solid var(--green);
+		}
+
+		h2 {
+			margin-bottom: 0;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: 24px;
+			font-weight: 500;
+		}
+
+		.section-note {
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		.field { margin-bottom: 20px; }
+
+		label {
+			display: block;
+			margin-bottom: 8px;
+			font-size: 13px;
+			font-weight: 700;
+		}
+
+		input, select {
+			width: 100%;
+			min-height: 48px;
+			padding: 11px 13px;
+			border: 1px solid #c8d0c7;
+			border-radius: 3px;
+			background: var(--white);
+			color: var(--ink);
+			font: inherit;
+			font-size: 15px;
+		}
+
+		input:focus, select:focus, button:focus-visible {
+			outline: 3px solid #a9c969;
+			outline-offset: 2px;
+		}
+
+		button {
+			min-height: 48px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			padding: 0 20px;
+			border: 0;
+			border-radius: 3px;
+			background: var(--green);
+			color: white;
+			font: inherit;
+			font-size: 14px;
+			font-weight: 700;
+			cursor: pointer;
+			transition: background-color 140ms ease, transform 140ms ease;
+		}
+
+		button:hover:not(:disabled) {
+			background: #245347;
+			transform: translateY(-1px);
+		}
+
+		button:disabled { cursor: wait; opacity: 0.65; }
+
+		.form-message {
+			min-height: 24px;
+			margin: 14px 0 0;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		.form-message[data-kind="success"] { color: var(--success); }
+		.form-message[data-kind="error"] { color: var(--danger); }
+
+		.count {
+			min-width: 27px;
+			padding: 4px 8px;
+			border-radius: 12px;
+			background: var(--green-soft);
+			color: var(--green);
+			font-size: 12px;
+			font-weight: 800;
+			text-align: center;
+		}
+
+		.registration-list {
+			display: grid;
+			gap: 0;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.registration {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: center;
+			gap: 18px;
+			padding: 17px 0;
+			border-bottom: 1px solid var(--line);
+			animation: reveal 240ms ease both;
+		}
+
+		.registration-name {
+			display: block;
+			margin-bottom: 5px;
+			overflow-wrap: anywhere;
+			font-size: 15px;
+			font-weight: 700;
+		}
+
+		.registration-event {
+			color: var(--muted);
+			font-size: 13px;
+		}
+
+		.registration-date {
+			color: var(--muted);
+			font-size: 12px;
+			text-align: right;
+			white-space: nowrap;
+		}
+
+		.list-state {
+			padding: 26px 0;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.6;
+		}
+
+		footer {
+			display: flex;
+			justify-content: space-between;
+			gap: 20px;
+			margin-top: 48px;
+			padding-top: 16px;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		@keyframes reveal {
+			from { opacity: 0; transform: translateY(5px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		@media (max-width: 760px) {
+			.masthead-inner, main { width: min(100% - 32px, 560px); }
+			.masthead-inner { min-height: 76px; }
+			main { padding-top: 34px; }
+			.intro { align-items: start; flex-direction: column; }
+			h1 { font-size: 36px; }
+			.workspace { grid-template-columns: 1fr; gap: 42px; }
+			footer { flex-direction: column; gap: 6px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+		}
+	</style>
+</head>
+<body>
+	<header class="masthead">
+		<div class="masthead-inner">
+			<a class="brand" href="/" aria-label="FestPass 2026 home">
+				<span class="brand-mark" aria-hidden="true">F</span>
+				<span>
+					<span class="brand-name">FestPass</span>
+					<span class="brand-caption">College Fest Registration</span>
+				</span>
+			</a>
+			<span class="edition">2026 Edition</span>
+		</div>
+	</header>
+
+	<main>
+		<section class="intro" aria-labelledby="page-title">
+			<div>
+				<p class="kicker">Make this fest yours</p>
+				<h1 id="page-title">FestPass 2026</h1>
+				<p class="intro-copy">Choose the events you want to be part of. Register here and find your name on the live attendee list.</p>
+			</div>
+			<div class="health" id="health" data-state="checking" role="status" aria-live="polite">
+				<span class="health-dot" aria-hidden="true"></span>
+				<span id="health-text">Checking services</span>
+			</div>
+		</section>
+
+		<div class="workspace">
+			<section aria-labelledby="register-heading">
+				<div class="section-heading">
+					<h2 id="register-heading">Your registration</h2>
+					<span class="section-note">Fields marked required</span>
+				</div>
+				<form id="registration-form">
+					<div class="field">
+						<label for="name">Your name <span aria-hidden="true">*</span></label>
+						<input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
+					</div>
+					<div class="field">
+						<label for="event">Choose an event <span aria-hidden="true">*</span></label>
+						<select id="event" name="event" required>
+							<option value="" disabled selected>Select a fest event</option>
+							<option>Opening Ceremony</option>
+							<option>Battle of the Bands</option>
+							<option>Dance Showcase</option>
+							<option>Fest Tech Expo</option>
+							<option>Photography Walk</option>
+						</select>
+					</div>
+					<button id="submit-button" type="submit">
+						<span id="submit-label">Complete registration</span>
+						<span aria-hidden="true">&#8594;</span>
+					</button>
+					<p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+				</form>
+			</section>
+
+			<section aria-labelledby="registrations-heading">
+				<div class="section-heading">
+					<h2 id="registrations-heading">Registered attendees</h2>
+					<span class="count" id="registration-count" aria-label="Number of registrations">0</span>
+				</div>
+				<p class="list-state" id="list-state" role="status" aria-live="polite">Loading registrations</p>
+				<ol class="registration-list" id="registration-list" aria-label="Fest registrations"></ol>
+			</section>
+		</div>
+
+		<footer>
+			<span>FestPass 2026</span>
+			<span>Registration desk · Campus Events</span>
+		</footer>
+	</main>
+
+	<script>
+		const form = document.querySelector("#registration-form");
+		const formMessage = document.querySelector("#form-message");
+		const submitButton = document.querySelector("#submit-button");
+		const submitLabel = document.querySelector("#submit-label");
+		const list = document.querySelector("#registration-list");
+		const listState = document.querySelector("#list-state");
+		const count = document.querySelector("#registration-count");
+		const health = document.querySelector("#health");
+		const healthText = document.querySelector("#health-text");
+
+		async function readJson(response) {
+			const body = await response.json();
+			if (!response.ok) throw new Error(body.error || "The request could not be completed.");
+			return body;
+		}
+
+		async function refreshHealth() {
+			health.dataset.state = "checking";
+			healthText.textContent = "Checking services";
+			try {
+				const result = await readJson(await fetch("/api/health", { cache: "no-store" }));
+				const online = result.status === "healthy" && result.database === "connected";
+				health.dataset.state = online ? "online" : "offline";
+				healthText.textContent = online ? "Registration services online" : "Database unavailable";
+			} catch {
+				health.dataset.state = "offline";
+				healthText.textContent = "Registration services unavailable";
+			}
+		}
+
+		function renderRegistration(registration, index) {
+			const item = document.createElement("li");
+			item.className = "registration";
+			item.style.animationDelay = `${Math.min(index, 8) * 35}ms`;
+
+			const details = document.createElement("div");
+			const name = document.createElement("span");
+			name.className = "registration-name";
+			name.textContent = registration.name;
+			const event = document.createElement("span");
+			event.className = "registration-event";
+			event.textContent = registration.event;
+			details.append(name, event);
+
+			const date = document.createElement("time");
+			date.className = "registration-date";
+			date.dateTime = registration.created_at;
+			date.textContent = new Date(registration.created_at).toLocaleString(undefined, {
+				month: "short", day: "numeric", hour: "numeric", minute: "2-digit"
+			});
+			item.append(details, date);
+			return item;
+		}
+
+		async function refreshRegistrations() {
+			list.replaceChildren();
+			listState.hidden = false;
+			listState.textContent = "Loading registrations";
+			try {
+				const result = await readJson(await fetch("/api/registrations", { cache: "no-store" }));
+				const registrations = result.registrations;
+				count.textContent = String(registrations.length);
+				if (registrations.length === 0) {
+					listState.textContent = "No registrations yet. Your name can be the first on the list.";
+					return;
+				}
+				listState.hidden = true;
+				list.replaceChildren(...registrations.map(renderRegistration));
+			} catch (error) {
+				count.textContent = "0";
+				listState.textContent = error.message;
+			}
+		}
+
+		form.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			formMessage.textContent = "";
+			formMessage.dataset.kind = "";
+			submitButton.disabled = true;
+			submitLabel.textContent = "Saving registration";
+			try {
+				const payload = Object.fromEntries(new FormData(form));
+				const response = await fetch("/api/registrations", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(payload)
+				});
+				const result = await readJson(response);
+				form.reset();
+				formMessage.dataset.kind = "success";
+				formMessage.textContent = `You're registered for ${result.registration.event}.`;
+				await Promise.all([refreshRegistrations(), refreshHealth()]);
+			} catch (error) {
+				formMessage.dataset.kind = "error";
+				formMessage.textContent = error.message;
+			} finally {
+				submitButton.disabled = false;
+				submitLabel.textContent = "Complete registration";
+			}
+		});
+
+		refreshHealth();
+		refreshRegistrations();
+		window.setInterval(refreshHealth, 30000);
+	</script>
+</body>
+</html>
