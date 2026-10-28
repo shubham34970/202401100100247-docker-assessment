@@ -137,7 +137,13 @@ cosign verify --key cosign.pub docker.io/shubham34970/fest-backend@sha256:4a570f
 - Stage 4: complete. Both 1.0.0 tags are published; the registry digest and fresh-pull runtime were verified.
 - Stage 5: complete. The 1.0.0 digest verifies; unsigned 1.0.1 was rejected.
 
-No screenshots are included or claimed. No GitHub push has been made. All remaining project changes are intended for one final local commit after review; GitHub push still requires explicit approval.
+## Screenshots
+
+- [FestPass registration page and persisted attendee list](screenshots/image-1793172490479.png)
+
+This screenshot shows the running FestPass interface. Other images supplied alongside it showed a different registration number or host port and are not included as evidence for this repository.
+
+GitHub contains the completed assessment commit. The screenshot addition will be published in a separate follow-up commit.
 
 ## AI Tools
 
